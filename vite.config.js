@@ -13,7 +13,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        entryFileNames: 'notice.widget.js',
+        entryFileNames: 'accelpay.notice.widget.js',
         manualChunks: undefined,
       }
     }
