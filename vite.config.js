@@ -14,8 +14,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
+        entryFileNames: 'notice.widget.js',
         manualChunks: undefined,
-      },
-    },
+      }
+    }
   },
 });
