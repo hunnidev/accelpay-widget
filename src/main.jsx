@@ -11,11 +11,11 @@ const renderTargetSelectors = (targetSelectors) => {
         if (target && !target.querySelector(".accelpay-widget-container")) {
           console.log("Accelpay Notice Rendered!");
           const container = document.createElement("div");
-          container.setAttribute(
-            "class",
-            `accelpay-widget-container ${targetSelector.extraClasses}`
-          );
+          container.setAttribute("class", `accelpay-widget-container`);
           target.appendChild(container);
+          if (!target.style.indexOf(targetSelector.extraStyle) > -1) {
+            target.style = target.style + targetSelector.extraStyle;
+          }
           render(<App />, container);
         }
       }
@@ -34,8 +34,12 @@ try {
 
     if (targetSelectors) {
       renderTargetSelectors(targetSelectors);
-      const targetsInterval = setInterval(() => renderTargetSelectors(targetSelectors), intervalTime);
-      window.accelpayNoticeWidget.clearTargetsInterval = () => clearInterval(targetsInterval);
+      const targetsInterval = setInterval(
+        () => renderTargetSelectors(targetSelectors),
+        intervalTime
+      );
+      window.accelpayNoticeWidget.clearTargetsInterval = () =>
+        clearInterval(targetsInterval);
     }
   }
 
