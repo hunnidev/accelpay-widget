@@ -18,6 +18,8 @@ try {
       render(<App />, container);
     }
   }
+
+  console.log('Accelpay initialized!');
 } catch (e) {
   console.error(
     "AccelpayWidgetData not found. Accelpay widget will not be rendered."
