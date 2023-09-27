@@ -13,13 +13,22 @@ try {
 
     if (target) {
       const container = document.createElement("div");
-      container.classList.add('accelpay-widget-container');
+      container.classList.add("accelpay-widget-container");
       target.appendChild(container);
       render(<App />, container);
     }
   }
 
-  console.log('Accelpay initialized!');
+  window.accelpayNoticeWidget = {
+    renderNoticeComponent: (targetSelector) => {
+      const target = document.querySelector(targetSelector);
+      if (target) {
+        render(<App />, target);
+      }
+    },
+  };
+
+  console.log("Accelpay initialized!");
 } catch (e) {
   console.error(
     "AccelpayWidgetData not found. Accelpay widget will not be rendered."
