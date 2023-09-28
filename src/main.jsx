@@ -13,7 +13,11 @@ const renderTargetSelectors = (targetSelectors) => {
           const container = document.createElement("div");
           container.setAttribute("class", `accelpay-widget-container`);
           target.appendChild(container);
-          if (!target.style.indexOf(targetSelector.extraStyle) > -1) {
+          if (
+            !target.style ||
+            !(typeof target.style.indexOf === "function") ||
+            !target.style.indexOf(targetSelector.extraStyle) > -1
+          ) {
             target.style = target.style + targetSelector.extraStyle;
           }
           render(<App />, container);
