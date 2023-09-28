@@ -5,7 +5,6 @@ import "./index.css";
 const renderTargetSelectors = (targetSelectors) => {
   if (targetSelectors) {
     for (const targetSelector of targetSelectors) {
-      console.log(targetSelector);
       if (targetSelector) {
         const target = document.querySelector(targetSelector.selector);
 
@@ -58,7 +57,7 @@ try {
     if (target) render(<App />, target);
   };
 
-  console.log("Accelpay initialized!");
+  console.log("Accelpay Notice initialized!");
 } catch (e) {
   console.error(
     "AccelpayWidgetData not found. Accelpay widget will not be rendered."
