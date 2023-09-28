@@ -60,7 +60,7 @@ try {
     targetOrTargetSelector
   ) => {
     if (typeof targetOrTargetSelector === "string") {
-      const targets = Array.from(document.querySelectorAll(targetSelector));
+      const targets = Array.from(document.querySelectorAll(targetOrTargetSelector));
 
       for (const target of targets) {
         if (target) render(<App />, target);
