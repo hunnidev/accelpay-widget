@@ -6,26 +6,28 @@ const renderTargetSelectors = (targetSelectors) => {
   if (targetSelectors) {
     for (const targetSelector of targetSelectors) {
       if (targetSelector) {
-        const target = document.querySelector(targetSelector.selector);
+        const targets = Array.from(document.querySelectorAll(targetSelector.selector));
 
-        if (target && !target.querySelector(".accelpay-widget-container")) {
-          console.log("Accelpay Notice Rendered!");
-          const container = document.createElement("div");
-          container.setAttribute("class", `accelpay-widget-container`);
-          target.appendChild(container);
-
-          const hasStyles =
-            target.style && typeof target.style.indexOf === "function";
-          const hasExtraStyles =
-            hasStyles && target.style.indexOf(targetSelector.extraStyle) > -1;
-
-          if (!hasStyles && targetSelector.extraStyle) {
-            target.style = targetSelector.extraStyle;
-          } else if (!hasExtraStyles) {
-            target.style = target.style + targetSelector.extraStyle;
+        for (const target of targets) {
+          if (target && !target.querySelector(".accelpay-widget-container")) {
+            console.log("Accelpay Notice Rendered!");
+            const container = document.createElement("div");
+            container.setAttribute("class", `accelpay-widget-container`);
+            target.appendChild(container);
+  
+            const hasStyles =
+              target.style && typeof target.style.indexOf === "function";
+            const hasExtraStyles =
+              hasStyles && target.style.indexOf(targetSelector.extraStyle) > -1;
+  
+            if (!hasStyles && targetSelector.extraStyle) {
+              target.style = targetSelector.extraStyle;
+            } else if (!hasExtraStyles) {
+              target.style = target.style + targetSelector.extraStyle;
+            }
+  
+            render(<App />, container);
           }
-
-          render(<App />, container);
         }
       }
     }
