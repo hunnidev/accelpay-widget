@@ -5,6 +5,7 @@ import "./index.css";
 const renderTargetSelectors = (targetSelectors) => {
   if (targetSelectors) {
     for (const targetSelector of targetSelectors) {
+      console.log(targetSelector);
       if (targetSelector) {
         const target = document.querySelector(targetSelector.selector);
 
@@ -13,13 +14,18 @@ const renderTargetSelectors = (targetSelectors) => {
           const container = document.createElement("div");
           container.setAttribute("class", `accelpay-widget-container`);
           target.appendChild(container);
-          if (
-            !target.style ||
-            !(typeof target.style.indexOf === "function") ||
-            !target.style.indexOf(targetSelector.extraStyle) > -1
-          ) {
+
+          const hasStyles =
+            target.style && typeof target.style.indexOf === "function";
+          const hasExtraStyles =
+            hasStyles && target.style.indexOf(targetSelector.extraStyle) > -1;
+
+          if (!hasStyles && targetSelector.extraStyle) {
+            target.style = targetSelector.extraStyle;
+          } else if (!hasExtraStyles) {
             target.style = target.style + targetSelector.extraStyle;
           }
+
           render(<App />, container);
         }
       }
