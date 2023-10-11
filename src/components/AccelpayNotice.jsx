@@ -9,9 +9,11 @@ export const AccelpayNotice = () => {
       target="_blank"
     >
       <span class="accelpay-text">
-        All alcoholic beverage sales are made by licensed retailers in the
-        AccelPay network
+        All alcoholic beverage sales are made by licensed retailers in the 
       </span>
+      <span class="accelpay-text underlined">AccelPay</span>
+
+      <span class="accelpay-text"> network.</span>
 
       {/* <span class="logo-span">
         <AccelpayLogo />

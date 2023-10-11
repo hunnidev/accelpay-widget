@@ -1,14 +1,21 @@
 a.accelpay-notice-container {
   color: inherit;
-  text-decoration: underline;
+  text-decoration: none;
   display: block;
 
   span {
     &.accelpay-text {
+      font-size: 12px;
+      text-decoration: none;
       opacity: 0.6;
       cursor: pointer;
       &:hover {
         opacity: 0.7;
+      }
+    }
+    &.accelpay-text {
+      &.underlined {
+        text-decoration: underline;
       }
     }
     &.logo-span {
